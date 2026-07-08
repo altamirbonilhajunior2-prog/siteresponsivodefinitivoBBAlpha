@@ -3,9 +3,9 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:#05070a;color:#fff;font-family:Arial,Helvetica,sans-serif}
 a{color:inherit;text-decoration:none}
-.site-header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 4.8vw;background:linear-gradient(180deg,rgba(3,12,26,.94),rgba(3,12,26,.44),rgba(3,12,26,0));backdrop-filter:blur(8px)}
-.brand{display:flex;align-items:center;justify-content:center;min-width:150px;padding:6px 9px;border-radius:14px;background:rgba(0,0,0,.34);box-shadow:0 8px 24px rgba(0,0,0,.25)}
-.brand img{width:154px;max-height:76px;height:auto;display:block;object-fit:contain}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:26px;height:100px;padding:0 4.8vw;background:linear-gradient(180deg,rgba(3,12,26,.96),rgba(3,12,26,.70),rgba(3,12,26,.10));backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;justify-content:center;width:340px;min-width:340px;height:90px;padding:6px 10px;border-radius:16px;background:rgba(0,0,0,.36);box-shadow:0 10px 30px rgba(0,0,0,.28)}
+.brand img{width:320px;max-width:320px;max-height:92px;height:auto;display:block;object-fit:contain}
 .nav{display:flex;gap:28px;text-transform:uppercase;font-size:13px;letter-spacing:.05em;font-weight:800;align-items:center}
 .nav a:hover{color:var(--gold2)}
 .header-cta{border:1px solid var(--gold);border-radius:6px;color:var(--gold2);padding:14px 20px;font-weight:900;text-transform:uppercase;font-size:12px;white-space:nowrap}
@@ -43,7 +43,7 @@ h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;line-height:1.
 .dark .photo-card img{box-shadow:0 10px 26px rgba(0,0,0,.32)}
 .contact{background:#060606;text-align:center}
 .footer{padding:54px 4.8vw;text-align:center;background:#020202;border-top:1px solid rgba(209,154,50,.3)}
-.footer img{height:118px;max-width:260px;object-fit:contain}
+.footer img{height:120px;max-width:320px;object-fit:contain}
 .footer p{color:#d9d9d9}
 .floating-whatsapp{position:fixed;right:22px;bottom:22px;z-index:60;width:66px;height:66px;border-radius:50%;background:#25d366;display:grid;place-items:center;font-size:31px;border:4px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,.35)}
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;z-index:100;padding:24px}
@@ -54,14 +54,13 @@ h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;line-height:1.
 .lightbox-prev{left:24px}.lightbox-next{right:24px}
 .lightbox-count{position:absolute;bottom:18px;color:#ddd;font-weight:800}
 @media(max-width:1100px){
-  .site-header{gap:14px}.nav{gap:16px;font-size:12px}.header-cta{padding:12px 14px}
+  .site-header{gap:18px}.nav{gap:16px;font-size:12px}.header-cta{padding:12px 14px}
   .stats{grid-template-columns:repeat(2,1fr);gap:18px}.stats div{border-right:0}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:760px){
-  .site-header{position:absolute;align-items:flex-start;flex-wrap:wrap;padding:16px 18px;background:linear-gradient(180deg,rgba(3,12,26,.94),rgba(3,12,26,.22),rgba(3,12,26,0))}
-  .brand{min-width:126px;padding:5px 7px}
-  .brand img{width:122px;max-height:62px}
+@media(max-width:760px){ .site-header{position:absolute;align-items:flex-start;flex-wrap:wrap;padding:16px 18px;background:linear-gradient(180deg,rgba(3,12,26,.94),rgba(3,12,26,.22),rgba(3,12,26,0))}
+  .brand{min-width:180px;padding:8px 10px}
+  .brand img{width:178px;max-height:88px}
   .menu-toggle{display:block}
   .header-cta{display:none}
   .nav{display:none;order:3;width:100%;flex-direction:column;align-items:flex-start;background:rgba(4,9,17,.92);border:1px solid rgba(240,189,85,.2);border-radius:14px;padding:16px;margin-top:8px}

@@ -1,1 +1,1 @@
-Versão corrigida: logo recolocado e reforçado no topo esquerdo, logo do rodapé aumentado e galeria reordenada em formato de tour fotográfico. Substitua todos os arquivos do repositório no GitHub por estes arquivos.
+Versão corrigida: nova foto de fachada adicionada como primeira imagem da galeria; lightbox atualizada; logo do cabeçalho configurado com 320px de largura e header com 100px; logo do rodapé ampliado.
