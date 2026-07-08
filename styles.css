@@ -80,3 +80,164 @@ h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;line-height:1.
   .photo-card img{height:265px}
   .floating-whatsapp{width:60px;height:60px;right:16px;bottom:16px}
 }
+
+
+/* =========================================================
+   AJUSTE FINAL DEFINITIVO DO LOGOTIPO B&B - HEADER
+   Pedido: logo realmente maior e visível.
+   ========================================================= */
+.site-header{
+  min-height:150px!important;
+  height:150px!important;
+  padding:10px 4.5vw!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:34px!important;
+  overflow:visible!important;
+  background:linear-gradient(180deg,rgba(3,12,26,.98),rgba(3,12,26,.86),rgba(3,12,26,.20))!important;
+  backdrop-filter:blur(10px)!important;
+  z-index:999!important;
+}
+.site-header .brand{
+  width:540px!important;
+  min-width:540px!important;
+  height:132px!important;
+  padding:0 10px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+  overflow:visible!important;
+}
+.site-header .brand img{
+  width:500px!important;
+  max-width:500px!important;
+  max-height:130px!important;
+  height:auto!important;
+  object-fit:contain!important;
+  display:block!important;
+}
+.site-header .nav{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:26px!important;
+  white-space:nowrap!important;
+  font-size:13px!important;
+}
+
+/* Dá espaço para o cabeçalho maior não cobrir o conteúdo */
+.hero{
+  padding-top:230px!important;
+}
+
+/* Rodapé também com logo maior */
+.footer img{
+  height:155px!important;
+  max-width:430px!important;
+  width:auto!important;
+  object-fit:contain!important;
+}
+
+/* Responsivo */
+@media(max-width:900px){
+  .site-header{
+    height:auto!important;
+    min-height:125px!important;
+    align-items:flex-start!important;
+    flex-wrap:wrap!important;
+    padding:14px 16px!important;
+  }
+  .site-header .brand{
+    width:330px!important;
+    min-width:330px!important;
+    height:105px!important;
+  }
+  .site-header .brand img{
+    width:315px!important;
+    max-width:315px!important;
+    max-height:100px!important;
+  }
+  .hero{
+    padding-top:185px!important;
+  }
+}
+
+
+/* =========================================================
+   CORREÇÃO DEFINITIVA DO LOGOTIPO B&B
+   O PNG foi recortado para remover margens vazias.
+   ========================================================= */
+.site-header{
+  height:140px!important;
+  min-height:140px!important;
+  padding:8px 4.5vw!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  overflow:visible!important;
+  background:linear-gradient(180deg,rgba(3,12,26,.98),rgba(3,12,26,.82),rgba(3,12,26,.20))!important;
+  z-index:999!important;
+}
+.site-header .brand{
+  width:520px!important;
+  min-width:520px!important;
+  height:124px!important;
+  padding:0!important;
+  margin:0!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  background:transparent!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+.site-header .brand img{
+  width:500px!important;
+  max-width:500px!important;
+  height:auto!important;
+  max-height:122px!important;
+  object-fit:contain!important;
+  display:block!important;
+}
+.site-header .nav{
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:26px!important;
+  white-space:nowrap!important;
+}
+.hero{
+  padding-top:220px!important;
+}
+.footer img{
+  height:190px!important;
+  width:auto!important;
+  max-width:520px!important;
+  object-fit:contain!important;
+}
+@media(max-width:900px){
+  .site-header{
+    height:auto!important;
+    min-height:120px!important;
+    padding:12px 16px!important;
+    flex-wrap:wrap!important;
+    align-items:flex-start!important;
+  }
+  .site-header .brand{
+    width:330px!important;
+    min-width:330px!important;
+    height:100px!important;
+  }
+  .site-header .brand img{
+    width:320px!important;
+    max-width:320px!important;
+    max-height:98px!important;
+  }
+  .hero{
+    padding-top:175px!important;
+  }
+}

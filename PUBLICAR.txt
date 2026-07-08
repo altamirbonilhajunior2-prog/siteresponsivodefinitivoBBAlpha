@@ -1,1 +1,1 @@
-Versão corrigida: nova foto de fachada adicionada como primeira imagem da galeria; lightbox atualizada; logo do cabeçalho configurado com 320px de largura e header com 100px; logo do rodapé ampliado.
+Correção definitiva: logo recortado sem margens vazias e aplicado no cabeçalho com 500px.
