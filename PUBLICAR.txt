@@ -1,10 +1,1 @@
-SITE RESPONSIVO DEFINITIVO
-
-- Desktop e mobile feitos com HTML/CSS real, sem hotspots.
-- Hero com foto da casa e texto branco forte.
-- Menu mobile com botão.
-- Galeria da casa: 48 fotos.
-- Clube: 14 fotos.
-- WhatsApp: (12) 97814-0636.
-
-Publique em repositório novo ou substitua o atual.
+Versão corrigida: logo recolocado e reforçado no topo esquerdo, logo do rodapé aumentado e galeria reordenada em formato de tour fotográfico. Substitua todos os arquivos do repositório no GitHub por estes arquivos.
