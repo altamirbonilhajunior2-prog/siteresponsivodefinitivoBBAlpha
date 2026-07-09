@@ -1,1 +1,1 @@
-Versão final: removido texto da Galeria da Casa, ajustado texto do Clube e corrigido botão Agendar Visita para ficar dentro da tela. Substitua index.html e styles.css no GitHub.
+Correção definitiva mobile: menu preto grande removido. Substitua index.html e styles.css no GitHub, principalmente styles.css. Depois limpe o cache do navegador no celular ou abra em aba anônima.
