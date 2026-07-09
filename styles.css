@@ -368,3 +368,378 @@ h1,h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;line-height:1.
     font-size:13px!important;
   }
 }
+
+
+/* =========================================================
+   CORREÇÃO FINAL DO CABEÇALHO
+   1) Remove retângulos amarelos de foco.
+   2) Traz o botão "Agendar visita" para dentro da tela.
+   3) Evita estouro horizontal do menu.
+   ========================================================= */
+
+a:focus,
+a:focus-visible,
+button:focus,
+button:focus-visible,
+.btn:focus,
+.btn:focus-visible,
+.nav a:focus,
+.nav a:focus-visible,
+.header-cta:focus,
+.header-cta:focus-visible,
+.menu-toggle:focus,
+.menu-toggle:focus-visible,
+.floating-whatsapp:focus,
+.floating-whatsapp:focus-visible{
+  outline:none!important;
+  box-shadow:none!important;
+}
+
+a::-moz-focus-inner,
+button::-moz-focus-inner{
+  border:0!important;
+}
+
+.site-header{
+  max-width:100vw!important;
+  overflow:visible!important;
+}
+
+.site-header .nav{
+  flex:1 1 auto!important;
+  min-width:0!important;
+}
+
+.site-header .header-cta{
+  flex:0 0 auto!important;
+  max-width:230px!important;
+  white-space:nowrap!important;
+  text-align:center!important;
+}
+
+/* Telas intermediárias: mantém tudo dentro do site */
+@media(max-width:1280px){
+  .site-header{
+    gap:14px!important;
+    padding-left:3vw!important;
+    padding-right:3vw!important;
+  }
+
+  .site-header .brand{
+    width:360px!important;
+    min-width:360px!important;
+  }
+
+  .site-header .brand img{
+    width:340px!important;
+    max-width:340px!important;
+  }
+
+  .site-header .nav{
+    gap:14px!important;
+    font-size:12px!important;
+  }
+
+  .site-header .header-cta{
+    max-width:190px!important;
+    padding:12px 14px!important;
+    font-size:11px!important;
+  }
+}
+
+/* Em notebooks estreitos/tablets, esconde o CTA para não estourar */
+@media(max-width:1050px){
+  .site-header .header-cta{
+    display:none!important;
+  }
+
+  .site-header .nav{
+    justify-content:flex-end!important;
+  }
+}
+
+/* Mobile preservado: menu hamburguer sem cobrir a fachada */
+@media(max-width:760px){
+  .site-header{
+    position:absolute!important;
+    height:78px!important;
+    min-height:78px!important;
+    padding:10px 16px!important;
+    flex-wrap:nowrap!important;
+    background:linear-gradient(180deg,rgba(3,12,26,.78),rgba(3,12,26,.22),rgba(3,12,26,0))!important;
+    backdrop-filter:none!important;
+  }
+
+  .site-header .brand{
+    width:210px!important;
+    min-width:210px!important;
+    height:60px!important;
+  }
+
+  .site-header .brand img{
+    width:205px!important;
+    max-width:205px!important;
+    max-height:58px!important;
+  }
+
+  .menu-toggle{
+    display:flex!important;
+    width:44px!important;
+    height:44px!important;
+    align-items:center!important;
+    justify-content:center!important;
+    padding:0!important;
+    margin-left:auto!important;
+    background:rgba(0,0,0,.28)!important;
+    border:1px solid rgba(240,189,85,.72)!important;
+    border-radius:10px!important;
+    color:#f0bd55!important;
+    font-size:24px!important;
+  }
+
+  .header-cta{
+    display:none!important;
+  }
+
+  .nav{
+    display:none!important;
+    position:absolute!important;
+    top:76px!important;
+    left:16px!important;
+    right:16px!important;
+    width:auto!important;
+    padding:16px!important;
+    gap:14px!important;
+    border-radius:14px!important;
+    background:rgba(4,9,17,.88)!important;
+    border:1px solid rgba(240,189,85,.22)!important;
+    box-shadow:0 18px 36px rgba(0,0,0,.28)!important;
+    backdrop-filter:blur(8px)!important;
+  }
+
+  .nav.open{
+    display:flex!important;
+  }
+
+  .hero{
+    min-height:100vh!important;
+    height:100vh!important;
+    padding:0 20px 42px!important;
+    align-items:flex-end!important;
+    background-position:center top!important;
+    background-size:cover!important;
+  }
+
+  .hero-layer{
+    background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.05) 34%,rgba(0,0,0,.72) 76%,rgba(0,0,0,.88) 100%)!important;
+  }
+}
+
+
+/* =========================================================
+   AJUSTE FINAL DESKTOP/NOTEBOOK - BOTAO AGENDAR DENTRO DO SITE
+   Centraliza o cabeçalho e impede o botão de sair pela direita.
+   ========================================================= */
+@media(min-width:761px){
+  .site-header{
+    width:min(92vw,1180px)!important;
+    max-width:1180px!important;
+    left:50%!important;
+    right:auto!important;
+    transform:translateX(-50%)!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+    gap:18px!important;
+    padding-left:22px!important;
+    padding-right:22px!important;
+    overflow:hidden!important;
+  }
+
+  .site-header .brand{
+    flex:0 0 auto!important;
+  }
+
+  .site-header .nav{
+    flex:1 1 auto!important;
+    min-width:0!important;
+    justify-content:center!important;
+    gap:18px!important;
+    overflow:hidden!important;
+  }
+
+  .site-header .nav a{
+    white-space:nowrap!important;
+    font-size:clamp(11px,1vw,13px)!important;
+  }
+
+  .site-header .header-cta{
+    flex:0 0 auto!important;
+    width:auto!important;
+    max-width:175px!important;
+    min-width:150px!important;
+    padding:11px 14px!important;
+    font-size:11px!important;
+    white-space:nowrap!important;
+    text-align:center!important;
+    overflow:hidden!important;
+  }
+}
+
+@media(min-width:761px) and (max-width:1120px){
+  .site-header{
+    width:90vw!important;
+    gap:12px!important;
+  }
+
+  .site-header .brand{
+    width:260px!important;
+    min-width:260px!important;
+  }
+
+  .site-header .brand img{
+    width:250px!important;
+    max-width:250px!important;
+  }
+
+  .site-header .nav{
+    gap:12px!important;
+  }
+
+  .site-header .header-cta{
+    max-width:145px!important;
+    min-width:130px!important;
+    padding:10px 11px!important;
+    font-size:10px!important;
+  }
+}
+
+@media(min-width:761px) and (max-width:980px){
+  .site-header .header-cta{
+    display:none!important;
+  }
+}
+
+
+/* =========================================================
+   AJUSTE FINAL - TEXTOS + BOTAO AGENDAR
+   - Remove contornos amarelos indesejados.
+   - Garante botão "Agendar Visita" dentro da tela.
+   - Evita estouro horizontal do cabeçalho.
+   ========================================================= */
+
+a:focus,
+a:focus-visible,
+button:focus,
+button:focus-visible,
+.btn:focus,
+.btn:focus-visible,
+.nav a:focus,
+.nav a:focus-visible,
+.header-cta:focus,
+.header-cta:focus-visible,
+.menu-toggle:focus,
+.menu-toggle:focus-visible,
+.floating-whatsapp:focus,
+.floating-whatsapp:focus-visible{
+  outline:none!important;
+  box-shadow:none!important;
+}
+
+@media(min-width:761px){
+  .site-header{
+    width:min(90vw,1160px)!important;
+    max-width:1160px!important;
+    left:50%!important;
+    right:auto!important;
+    transform:translateX(-50%)!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+    padding-left:20px!important;
+    padding-right:20px!important;
+    gap:14px!important;
+    overflow:hidden!important;
+  }
+
+  .site-header .brand{
+    flex:0 0 auto!important;
+  }
+
+  .site-header .nav{
+    flex:1 1 auto!important;
+    min-width:0!important;
+    justify-content:center!important;
+    gap:16px!important;
+    overflow:hidden!important;
+  }
+
+  .site-header .nav a{
+    white-space:nowrap!important;
+    font-size:clamp(10px,.95vw,13px)!important;
+  }
+
+  .site-header .header-cta{
+    flex:0 0 auto!important;
+    max-width:160px!important;
+    min-width:135px!important;
+    padding:10px 12px!important;
+    font-size:10px!important;
+    white-space:nowrap!important;
+    text-align:center!important;
+    overflow:hidden!important;
+  }
+}
+
+@media(min-width:761px) and (max-width:1080px){
+  .site-header{
+    width:88vw!important;
+    gap:10px!important;
+  }
+
+  .site-header .brand{
+    width:245px!important;
+    min-width:245px!important;
+  }
+
+  .site-header .brand img{
+    width:235px!important;
+    max-width:235px!important;
+  }
+
+  .site-header .nav{
+    gap:10px!important;
+  }
+
+  .site-header .header-cta{
+    max-width:128px!important;
+    min-width:118px!important;
+    padding:9px 10px!important;
+    font-size:9px!important;
+  }
+}
+
+@media(min-width:761px) and (max-width:970px){
+  .site-header .header-cta{
+    display:none!important;
+  }
+}
+
+@media(max-width:760px){
+  .hero-actions{
+    justify-content:center!important;
+    gap:12px!important;
+    flex-wrap:wrap!important;
+  }
+
+  .hero-actions a,
+  .hero-actions .btn{
+    max-width:280px!important;
+    width:100%!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+
+  .site-header{
+    max-width:100vw!important;
+    overflow:visible!important;
+  }
+}
