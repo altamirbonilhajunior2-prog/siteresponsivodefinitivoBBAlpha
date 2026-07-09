@@ -1,1 +1,1 @@
-Correção definitiva: logo recortado sem margens vazias e aplicado no cabeçalho com 500px.
+Correção mobile premium aplicada. Substitua principalmente o arquivo styles.css no GitHub. Desktop preservado; no celular o cabeçalho fica menor e a fachada aparece melhor.
