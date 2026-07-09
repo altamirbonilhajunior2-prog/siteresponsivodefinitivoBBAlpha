@@ -58,3 +58,12 @@ document.addEventListener("keydown", event => {
   if (event.key === "ArrowRight") moveLightbox(1);
   if (event.key === "ArrowLeft") moveLightbox(-1);
 });
+
+
+/* Correção definitiva: o menu mobile nunca carrega aberto */
+document.addEventListener('DOMContentLoaded', function () {
+  var nav = document.querySelector('.nav');
+  var toggle = document.querySelector('.menu-toggle');
+  if (nav) nav.classList.remove('open');
+  if (toggle) toggle.setAttribute('aria-expanded', 'false');
+});
