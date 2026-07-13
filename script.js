@@ -1,119 +1,185 @@
 const galleries = {
-  casa: ["galeria/foto-casa-00-fachada-principal.png", "galeria/foto-casa-08.jpg", "galeria/foto-casa-45.jpg", "galeria/foto-casa-48.jpg", "galeria/foto-casa-10.jpg", "galeria/foto-casa-02.jpg", "galeria/foto-casa-19.jpg", "galeria/foto-casa-03.jpg", "galeria/foto-casa-04.jpg", "galeria/foto-casa-28.jpg", "galeria/foto-casa-09.jpg", "galeria/foto-casa-13.jpg", "galeria/foto-casa-17.jpg", "galeria/foto-casa-26.jpg", "galeria/foto-casa-27.jpg", "galeria/foto-casa-12.jpg", "galeria/foto-casa-14.jpg", "galeria/foto-casa-15.jpg", "galeria/foto-casa-25.jpg", "galeria/foto-casa-21.jpg", "galeria/foto-casa-41.jpg", "galeria/foto-casa-46.jpg", "galeria/foto-casa-47.jpg", "galeria/foto-casa-01.jpg", "galeria/foto-casa-05.jpg", "galeria/foto-casa-06.jpg", "galeria/foto-casa-11.jpg", "galeria/foto-casa-23.jpg", "galeria/foto-casa-24.jpg", "galeria/foto-casa-34.jpg", "galeria/foto-casa-38.jpg", "galeria/foto-casa-33.jpg", "galeria/foto-casa-35.jpg", "galeria/foto-casa-36.jpg", "galeria/foto-casa-07.jpg", "galeria/foto-casa-29.jpg", "galeria/foto-casa-30.jpg", "galeria/foto-casa-37.jpg", "galeria/foto-casa-39.jpg", "galeria/foto-casa-40.jpg", "galeria/foto-casa-42.jpg", "galeria/foto-casa-43.jpg", "galeria/foto-casa-44.jpg", "galeria/foto-casa-31.jpg", "galeria/foto-casa-32.jpg", "galeria/foto-casa-16.jpg", "galeria/foto-casa-18.jpg", "galeria/foto-casa-20.jpg", "galeria/foto-casa-22.jpg"],
-  clube: ["assets/clube/clube-01.jpg", "assets/clube/clube-02.jpg", "assets/clube/clube-03.jpg", "assets/clube/clube-04.jpg", "assets/clube/clube-05.jpg", "assets/clube/clube-06.jpg", "assets/clube/clube-07.jpg", "assets/clube/clube-08.jpg", "assets/clube/clube-09.jpg", "assets/clube/clube-10.jpg", "assets/clube/clube-11.jpg", "assets/clube/clube-12.jpg", "assets/clube/clube-13.jpg", "assets/clube/clube-14.jpg"]
+  casa: [
+    "galeria/foto-casa-00-fachada-principal.png",
+    "galeria/foto-casa-08.jpg",
+    "galeria/foto-casa-45.jpg",
+    "galeria/foto-casa-48.jpg",
+    "galeria/foto-casa-10.jpg",
+    "galeria/foto-casa-02.jpg",
+    "galeria/foto-casa-19.jpg",
+    "galeria/foto-casa-03.jpg",
+    "galeria/foto-casa-04.jpg",
+    "galeria/foto-casa-28.jpg",
+    "galeria/foto-casa-09.jpg",
+    "galeria/foto-casa-13.jpg",
+    "galeria/foto-casa-17.jpg",
+    "galeria/foto-casa-26.jpg",
+    "galeria/foto-casa-27.jpg",
+    "galeria/foto-casa-12.jpg",
+    "galeria/foto-casa-14.jpg",
+    "galeria/foto-casa-15.jpg",
+    "galeria/foto-casa-25.jpg",
+    "galeria/foto-casa-21.jpg",
+    "galeria/foto-casa-41.jpg",
+    "galeria/foto-casa-46.jpg",
+    "galeria/foto-casa-47.jpg",
+    "galeria/foto-casa-01.jpg",
+    "galeria/foto-casa-05.jpg",
+    "galeria/foto-casa-06.jpg",
+    "galeria/foto-casa-11.jpg",
+    "galeria/foto-casa-23.jpg",
+    "galeria/foto-casa-24.jpg",
+    "galeria/foto-casa-34.jpg",
+    "galeria/foto-casa-38.jpg",
+    "galeria/foto-casa-33.jpg",
+    "galeria/foto-casa-35.jpg",
+    "galeria/foto-casa-36.jpg",
+    "galeria/foto-casa-07.jpg",
+    "galeria/foto-casa-29.jpg",
+    "galeria/foto-casa-30.jpg",
+    "galeria/foto-casa-37.jpg",
+    "galeria/foto-casa-39.jpg",
+    "galeria/foto-casa-40.jpg",
+    "galeria/foto-casa-42.jpg",
+    "galeria/foto-casa-43.jpg",
+    "galeria/foto-casa-44.jpg",
+    "galeria/foto-casa-31.jpg",
+    "galeria/foto-casa-32.jpg",
+    "galeria/foto-casa-16.jpg",
+    "galeria/foto-casa-18.jpg",
+    "galeria/foto-casa-20.jpg",
+    "galeria/foto-casa-22.jpg"
+  ],
+  clube: Array.from(
+    { length: 14 },
+    (_, index) => `assets/clube/clube-${String(index + 1).padStart(2, "0")}.jpg`
+  )
 };
 
-let currentGallery = "casa";
-let currentIndex = 0;
-
-const nav = document.querySelector(".nav");
-const menuToggle = document.querySelector(".menu-toggle");
-if (menuToggle) {
-  menuToggle.addEventListener("click", () => nav.classList.toggle("open"));
-}
-document.querySelectorAll(".nav a").forEach(link => {
-  link.addEventListener("click", () => nav.classList.remove("open"));
+document.addEventListener("DOMContentLoaded", () => {
+  setupMobileMenu();
+  setupLightbox();
+  setupWhatsAppTracking();
 });
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const lightboxCount = document.getElementById("lightbox-count");
+function setupMobileMenu() {
+  const header = document.querySelector(".site-header");
+  const nav = document.querySelector(".site-header .nav");
+  const toggle = document.querySelector(".menu-toggle");
 
-document.querySelectorAll(".photo-card").forEach(button => {
-  button.addEventListener("click", () => openLightbox(button.dataset.gallery, Number(button.dataset.index)));
-});
+  if (!nav || !toggle) return;
 
-function openLightbox(gallery, index) {
-  currentGallery = gallery;
-  currentIndex = index;
-  renderLightbox();
-  lightbox.classList.add("open");
-  lightbox.setAttribute("aria-hidden", "false");
+  const setMenuState = (open) => {
+    document.body.classList.toggle("mobile-menu-open", open);
+    nav.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+  };
+
+  setMenuState(false);
+
+  toggle.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setMenuState(!document.body.classList.contains("mobile-menu-open"));
+  });
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenuState(false));
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!document.body.classList.contains("mobile-menu-open")) return;
+    if (header?.contains(event.target)) return;
+    setMenuState(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenuState(false);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 760) setMenuState(false);
+  });
 }
 
-function closeLightbox() {
-  lightbox.classList.remove("open");
-  lightbox.setAttribute("aria-hidden", "true");
-}
+function setupLightbox() {
+  const lightbox = document.getElementById("lightbox");
+  const image = document.getElementById("lightbox-img");
+  const count = document.getElementById("lightbox-count");
+  const closeButton = document.querySelector(".lightbox-close");
+  const previousButton = document.querySelector(".lightbox-prev");
+  const nextButton = document.querySelector(".lightbox-next");
 
-function moveLightbox(direction) {
-  const items = galleries[currentGallery];
-  currentIndex = (currentIndex + direction + items.length) % items.length;
-  renderLightbox();
-}
+  if (!lightbox || !image || !count || !closeButton || !previousButton || !nextButton) return;
 
-function renderLightbox() {
-  const items = galleries[currentGallery];
-  lightboxImg.src = items[currentIndex];
-  lightboxCount.textContent = `${currentIndex + 1} / ${items.length}`;
-}
+  let currentGallery = "casa";
+  let currentIndex = 0;
 
-document.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
-document.querySelector(".lightbox-prev").addEventListener("click", () => moveLightbox(-1));
-document.querySelector(".lightbox-next").addEventListener("click", () => moveLightbox(1));
-lightbox.addEventListener("click", event => { if (event.target === lightbox) closeLightbox(); });
-document.addEventListener("keydown", event => {
-  if (!lightbox.classList.contains("open")) return;
-  if (event.key === "Escape") closeLightbox();
-  if (event.key === "ArrowRight") moveLightbox(1);
-  if (event.key === "ArrowLeft") moveLightbox(-1);
-});
+  const render = () => {
+    const items = galleries[currentGallery];
+    image.src = items[currentIndex];
+    image.alt = `Foto ampliada ${currentIndex + 1} de ${items.length}`;
+    count.textContent = `${currentIndex + 1} / ${items.length}`;
+  };
 
+  const open = (gallery, index) => {
+    if (!galleries[gallery]) return;
+    currentGallery = gallery;
+    currentIndex = index;
+    render();
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("lightbox-open");
+    closeButton.focus();
+  };
 
-/* Correção definitiva: o menu mobile nunca carrega aberto */
-document.addEventListener('DOMContentLoaded', function () {
-  var nav = document.querySelector('.nav');
-  var toggle = document.querySelector('.menu-toggle');
-  if (nav) nav.classList.remove('open');
-  if (toggle) toggle.setAttribute('aria-expanded', 'false');
-});
+  const close = () => {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("lightbox-open");
+  };
 
+  const move = (direction) => {
+    const items = galleries[currentGallery];
+    currentIndex = (currentIndex + direction + items.length) % items.length;
+    render();
+  };
 
-
-// MENU MOBILE FINAL
-document.addEventListener('DOMContentLoaded', function () {
-  const nav = document.querySelector('.site-header .nav');
-  const toggle = document.querySelector('.menu-toggle');
-
-  document.body.classList.remove('mobile-menu-open');
-
-  if (nav) {
-    nav.classList.remove('open');
-  }
-
-  if (toggle) {
-    toggle.setAttribute('aria-expanded', 'false');
-
-    toggle.addEventListener('click', function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-
-      const isOpen = document.body.classList.toggle('mobile-menu-open');
-
-      if (nav) {
-        nav.classList.toggle('open', isOpen);
-      }
-
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  document.querySelectorAll(".photo-card").forEach((button) => {
+    button.addEventListener("click", () => {
+      open(button.dataset.gallery, Number(button.dataset.index));
     });
-  }
+  });
 
-  if (nav) {
-    nav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        document.body.classList.remove('mobile-menu-open');
-        nav.classList.remove('open');
-        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  closeButton.addEventListener("click", close);
+  previousButton.addEventListener("click", () => move(-1));
+  nextButton.addEventListener("click", () => move(1));
+
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) close();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox.classList.contains("open")) return;
+    if (event.key === "Escape") close();
+    if (event.key === "ArrowRight") move(1);
+    if (event.key === "ArrowLeft") move(-1);
+  });
+}
+
+function setupWhatsAppTracking() {
+  document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      if (typeof window.gtag !== "function") return;
+
+      window.gtag("event", "generate_lead", {
+        event_category: "WhatsApp",
+        event_label: "Casa Alphaville II",
+        cta_location: link.dataset.ctaLocation || "nao_identificado",
+        link_url: link.href,
+        transport_type: "beacon"
       });
     });
-  }
-
-  document.addEventListener('click', function (event) {
-    if (!document.body.classList.contains('mobile-menu-open')) return;
-    if (event.target.closest('.site-header')) return;
-
-    document.body.classList.remove('mobile-menu-open');
-    if (nav) nav.classList.remove('open');
-    if (toggle) toggle.setAttribute('aria-expanded', 'false');
   });
-});
+}
