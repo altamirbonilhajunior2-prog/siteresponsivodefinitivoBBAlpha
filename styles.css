@@ -667,88 +667,19 @@ h2 {
   }
 }
 
-
-/* B&B Consultoria Imobiliária — refinamentos v2.1 */
-.site-header {
-  min-height: 112px;
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
-
-.brand {
-  width: 300px;
-  min-width: 300px;
-  height: 96px;
-}
-
-.brand img {
-  width: 285px;
-  max-height: 94px;
-  object-fit: contain;
-}
-
-.hero-content {
-  max-width: 940px;
-}
-
-.hero h1 {
-  font-size: clamp(42px, 5.2vw, 76px);
-  max-width: 900px;
-}
-
-.hero h2 {
-  font-size: clamp(28px, 3.5vw, 50px);
-}
-
-.brand-signature {
-  max-width: 760px;
-  margin: 18px 0 0;
-  color: #f0bd55;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(16px, 1.5vw, 21px);
-  font-style: italic;
-  line-height: 1.4;
-  text-shadow: 0 2px 10px rgba(0,0,0,.75);
-}
-
-.header-cta {
-  background: rgba(209,154,50,.10);
-}
-
-@media (max-width: 1120px) and (min-width: 761px) {
-  .brand {
-    width: 220px;
-    min-width: 220px;
-  }
-
-  .brand img {
-    width: 210px;
-  }
-}
-
-@media (max-width: 760px) {
-  .brand {
-    width: 152px;
-    min-width: 152px;
-    height: 60px;
-  }
-
-  .brand img {
-    width: 148px;
-    max-height: 58px;
-  }
-
-  .hero h1 {
-    font-size: 31px;
-  }
-
-  .hero h2 {
-    font-size: 22px;
-  }
-
-  .brand-signature {
-    margin-top: 12px;
-    font-size: 14px;
-    text-align: center;
-  }
-}
+/* B&B Consultoria Imobiliária — versão final v2.3 */
+.site-header{min-height:96px;padding:6px 24px;gap:16px;background:linear-gradient(180deg,rgba(3,12,26,.98),rgba(3,12,26,.90));}
+.brand{width:220px;min-width:220px;height:84px;}
+.brand img{width:210px;max-height:80px;object-fit:contain;}
+.nav{gap:20px;font-size:clamp(11px,.85vw,14px);}
+.header-cta{min-width:220px;padding:16px 20px;border:2px solid var(--gold);border-radius:14px;background:rgba(209,154,50,.08);box-shadow:0 0 0 3px rgba(209,154,50,.16);transition:transform .2s ease,background .2s ease,box-shadow .2s ease;}
+.header-cta:hover{transform:translateY(-2px);background:rgba(209,154,50,.16);box-shadow:0 10px 24px rgba(0,0,0,.28);}
+.hero{padding:190px 5.6vw 78px;}
+.hero-content{max-width:980px;}
+.hero h1{max-width:920px;font-size:clamp(48px,5.6vw,82px);line-height:.98;}
+.hero h2{margin-top:12px;font-size:clamp(30px,3.6vw,52px);}
+.hero-subtitle{max-width:900px;}
+.brand-signature{max-width:760px;margin:18px 0 0;color:var(--gold-light);font-family:Georgia,"Times New Roman",serif;font-size:clamp(16px,1.45vw,21px);font-style:italic;line-height:1.4;text-shadow:0 2px 10px rgba(0,0,0,.75);}
+.footer img{width:min(360px,82vw);max-width:360px;height:auto;}
+@media(max-width:1120px) and (min-width:761px){.site-header{width:94vw}.brand{width:185px;min-width:185px}.brand img{width:176px}.header-cta{min-width:170px}}
+@media(max-width:760px){.site-header{min-height:72px;padding:8px 16px}.brand{width:132px;min-width:132px;height:54px}.brand img{width:128px;max-height:52px}.hero{padding:0 22px 34px}.hero h1{font-size:34px;line-height:1.02}.hero h2{font-size:23px}.brand-signature{margin-top:12px;font-size:14px;text-align:center}}
