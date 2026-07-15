@@ -170,20 +170,32 @@ function setupLightbox() {
 
 function setupWhatsAppTracking() {
   document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (event) => {
       if (typeof window.gtag !== "function") return;
 
+      const ctaLocation = link.dataset.ctaLocation || "nao_identificado";
+
+      // Evento analítico para GA4
       window.gtag("event", "generate_lead", {
         event_category: "WhatsApp",
         event_label: "Casa Alphaville II",
-        cta_location: link.dataset.ctaLocation || "nao_identificado",
+        cta_location: ctaLocation,
         link_url: link.href,
         transport_type: "beacon"
       });
 
+      // Evento auxiliar específico
       window.gtag("event", "whatsapp_click", {
         property_name: "Casa Alphaville II",
-        cta_location: link.dataset.ctaLocation || "nao_identificado",
+        cta_location: ctaLocation,
+        transport_type: "beacon"
+      });
+
+      // Conversão oficial do Google Ads
+      window.gtag("event", "conversion", {
+        send_to: "AW-18217048699/fHmNCKmp2rkcEPu0yO5D",
+        value: 1.0,
+        currency: "BRL",
         transport_type: "beacon"
       });
     });
