@@ -1,1 +1,20 @@
-Correção definitiva mobile: menu preto grande removido. Substitua index.html e styles.css no GitHub, principalmente styles.css. Depois limpe o cache do navegador no celular ou abra em aba anônima.
+PUBLICAÇÃO RÁPIDA — CASA ALPHAVILLE II v2.1
+
+Substitua no GitHub:
+- index.html
+- styles.css
+- script.js
+- assets/logo-bb.png
+- assets/logo-bb-footer.png
+
+Não apague as demais imagens ou pastas.
+
+Teste após o commit:
+https://altamirbonilhajunior2-prog.github.io/siteresponsivodefinitivoBBAlpha/?v=2.1
+
+Rastreamento:
+- generate_lead no clique de WhatsApp
+- whatsapp_click no clique de WhatsApp
+
+A conversão oficial direta do Google Ads ainda depende do rótulo exclusivo
+no formato AW-18217048699/ROTULO.

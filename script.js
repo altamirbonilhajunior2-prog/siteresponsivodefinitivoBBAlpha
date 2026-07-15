@@ -180,6 +180,12 @@ function setupWhatsAppTracking() {
         link_url: link.href,
         transport_type: "beacon"
       });
+
+      window.gtag("event", "whatsapp_click", {
+        property_name: "Casa Alphaville II",
+        cta_location: link.dataset.ctaLocation || "nao_identificado",
+        transport_type: "beacon"
+      });
     });
   });
 }
