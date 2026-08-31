@@ -1,7 +1,7 @@
 const galleries = {
   casa: [
-    "galeria/ia/01_fachada_noturna_familia_2_carros.jpg",
-    "galeria/ia/02_fachada_diurna_familia_2_carros.jpg",
+    "galeria/ia/01_fachada_noturna_familia_2_carros_sem_numero.jpg",
+    "galeria/ia/02_fachada_diurna_familia_2_carros_sem_numero.jpg",
     "galeria/ia/03_sala_pe_direito_duplo_familia.jpg",
     "galeria/ia/04_sala_integrada_familia.jpg",
     "galeria/ia/05_cozinha_integrada_familia.jpg",
@@ -14,8 +14,8 @@ const galleries = {
     "galeria/ia/12_quarto_infantil_ambientado.jpg",
     "galeria/ia/13_escritorio_familia_pet.jpg",
     "galeria/ia/15_terraco_familia_pet.jpg",
-    "galeria/foto-casa-00-fachada-principal.png",
-    "galeria/foto-casa-08.jpg",
+    "galeria/foto-casa-00-fachada-principal-sem-numero.png",
+    "galeria/foto-casa-08-sem-numero.jpg",
     "galeria/foto-casa-45.jpg",
     "galeria/foto-casa-48.jpg",
     "galeria/foto-casa-10.jpg",
