@@ -70,8 +70,17 @@ const galleries = {
   )
 };
 
+const leadConfig = {
+  propertyCode: "BBC001",
+  propertyTitle: "Casa Alphaville II",
+  gallery: "casa"
+};
+
+let showLeadPromptForPhoto = () => {};
+
 document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
+  setupPropertyLeadPrompt();
   setupLightbox();
   setupWhatsAppTracking();
 });
@@ -146,6 +155,7 @@ function setupLightbox() {
     lightbox.setAttribute("aria-hidden", "false");
     document.body.classList.add("lightbox-open");
     closeButton.focus();
+    showLeadPromptForPhoto(currentGallery, currentIndex);
   };
 
   const close = () => {
@@ -158,6 +168,7 @@ function setupLightbox() {
     const items = galleries[currentGallery];
     currentIndex = (currentIndex + direction + items.length) % items.length;
     render();
+    showLeadPromptForPhoto(currentGallery, currentIndex);
   };
 
   document.querySelectorAll(".photo-card").forEach((button) => {
@@ -179,6 +190,101 @@ function setupLightbox() {
     if (event.key === "Escape") close();
     if (event.key === "ArrowRight") move(1);
     if (event.key === "ArrowLeft") move(-1);
+  });
+}
+
+function setupPropertyLeadPrompt() {
+  const prompt = document.getElementById("property-lead-prompt");
+  const closeButton = prompt?.querySelector(".lead-prompt-close");
+  const form = document.getElementById("lead-prompt-form");
+  const status = document.getElementById("lead-form-status");
+  const success = document.getElementById("lead-success");
+
+  if (!prompt || !closeButton || !form || !status || !success) return;
+
+  const storageKey = `bb-lead-prompted:${leadConfig.propertyCode}`;
+
+  const closePrompt = () => {
+    prompt.classList.remove("open");
+    window.setTimeout(() => {
+      prompt.hidden = true;
+    }, 180);
+  };
+
+  showLeadPromptForPhoto = (gallery, index) => {
+    if (gallery !== leadConfig.gallery || index !== 3) return;
+
+    try {
+      if (window.sessionStorage.getItem(storageKey)) return;
+      window.sessionStorage.setItem(storageKey, "true");
+    } catch {
+      // O convite continua funcionando quando o navegador bloqueia o armazenamento.
+    }
+
+    prompt.hidden = false;
+    window.requestAnimationFrame(() => prompt.classList.add("open"));
+    window.setTimeout(() => form.elements.name?.focus(), 200);
+  };
+
+  closeButton.addEventListener("click", closePrompt);
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const submitButton = form.querySelector(".lead-submit");
+    const formData = new FormData(form);
+    const searchParams = new URLSearchParams(window.location.search);
+
+    status.textContent = "";
+    status.classList.remove("error");
+    submitButton.disabled = true;
+    submitButton.textContent = "Registrando...";
+
+    try {
+      const response = await fetch("https://www.bbconsultoriaimoveis.com.br/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          propertyCode: leadConfig.propertyCode,
+          name: formData.get("name"),
+          phone: formData.get("phone"),
+          consent: formData.get("consent") === "on",
+          company: formData.get("company"),
+          sourcePage: window.location.href,
+          referrer: document.referrer || null,
+          utmSource: searchParams.get("utm_source"),
+          utmMedium: searchParams.get("utm_medium"),
+          utmCampaign: searchParams.get("utm_campaign"),
+          utmTerm: searchParams.get("utm_term"),
+          utmContent: searchParams.get("utm_content"),
+          gclid: searchParams.get("gclid")
+        })
+      });
+
+      const result = await response.json();
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Não foi possível registrar seu contato.");
+      }
+
+      form.hidden = true;
+      success.hidden = false;
+
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "landing_lead_created", {
+          property_name: leadConfig.propertyTitle,
+          property_code: leadConfig.propertyCode,
+          transport_type: "beacon"
+        });
+      }
+    } catch (error) {
+      status.textContent = error instanceof Error
+        ? error.message
+        : "Não foi possível registrar seu contato.";
+      status.classList.add("error");
+      submitButton.disabled = false;
+      submitButton.textContent = "Receber informações";
+    }
   });
 }
 
