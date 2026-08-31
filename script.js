@@ -13,7 +13,6 @@ const galleries = {
     "galeria/ia/11_suite_ambientada.jpg",
     "galeria/ia/12_quarto_infantil_ambientado.jpg",
     "galeria/ia/13_escritorio_familia_pet.jpg",
-    "galeria/ia/14_mezanino_familia_pet.jpg",
     "galeria/ia/15_terraco_familia_pet.jpg",
     "galeria/foto-casa-00-fachada-principal.png",
     "galeria/foto-casa-08.jpg",
