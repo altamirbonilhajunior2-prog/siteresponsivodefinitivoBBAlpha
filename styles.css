@@ -637,7 +637,9 @@ h2 {
   }
 
   .photo-card img {
-    height: 265px;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
   }
 
   .footer img {
