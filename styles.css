@@ -760,3 +760,60 @@ h2 {
     max-width: 100%;
   }
 }
+
+/* Acesso institucional ao portal B&B — v2.6 */
+.portal-cta {
+  display: inline-flex;
+  flex: 0 0 auto;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 15px;
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(209, 154, 50, .22), rgba(3, 12, 26, .92));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .24);
+  color: var(--gold-light);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.portal-cta:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(209, 154, 50, .34), rgba(3, 12, 26, .96));
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .3);
+}
+
+@media (max-width: 1180px) and (min-width: 761px) {
+  .portal-cta {
+    min-height: 42px;
+    padding: 10px 13px;
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 760px) {
+  .portal-cta {
+    order: 2;
+    min-height: 40px;
+    margin-left: auto;
+    padding: 9px 11px;
+    border-radius: 10px;
+    font-size: 9px;
+    letter-spacing: .035em;
+  }
+
+  .menu-toggle {
+    order: 3;
+    margin-left: 8px;
+  }
+
+  .site-header .nav {
+    order: 4;
+  }
+}
